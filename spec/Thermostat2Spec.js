@@ -61,16 +61,23 @@ describe('Thermostat2', function(){
       expect(thermostat2.temperature).toEqual(20);
     });
 
-    xit('has a display that is yellow when it starts', function(){
-
+    it('has a display that is yellow when it starts', function(){
+      expect(thermostat2.colorDisplay()).toEqual('Yellow');
     });
 
-    xit('has a display that turn the temperature to red when its over 25 degrees', function(){
-
+    it('has a display that turn the temperature to red when its over 25 degrees', function(){
+      thermostat2.togglePowerSavingMode();
+      for(i=0;i<10;i++){
+      thermostat2.up();
+      };
+      expect(thermostat2.colorDisplay()).toEqual('Red');
     });
 
-    xit('has a display that turn the temperature to gree when its under 18 degrees', function(){
-      
+    it('has a display that turn the temperature to gree when its under 18 degrees', function(){
+      for(i=0;i<5;i++){
+      thermostat2.down();
+      };
+      expect(thermostat2.colorDisplay()).toEqual('Green');      
     });
   });
 });

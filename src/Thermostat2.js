@@ -37,3 +37,9 @@ Thermostat2.prototype.down = function() {
 Thermostat2.prototype.pressReset = function(){
   this.temperature = 20;
 };
+
+Thermostat2.prototype.colorDisplay = function (){
+  if (this.temperature > 25) return 'Red';
+  if (this.temperature < 18) return 'Green';
+  return 'Yellow'
+};
