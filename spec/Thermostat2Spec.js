@@ -1,28 +1,27 @@
 describe('Thermostat2', function(){
   var thermostat2;
-  
+  beforeEach(function(){
+    thermostat2 = new Thermostat2();
+  });
   describe('at initial state', function(){
     it('starts at a temperature of 20 degrees', function(){
-      thermostat2 = new Thermostat2;
-      expect(thermostat2.temperature()).toEqual(20);
+      expect(thermostat2.temperature).toEqual(20);
     });
 
-    xit('has a power saving mode that can be turned on and off', function(){
-
-    });
-
-    xit('has a power saving mode turned on by default', function(){
-
+    it('has a power saving mode turned on by default', function(){
+      expect(thermostat2.psmode).toBe(true);
     });
   });
 
   describe('functionalities', function(){
-    xit('increases the temperature of 1 with up button', function(){
-
+    it('increases the temperature of 1 with up button', function(){
+      thermostat2.up();
+      expect(thermostat2.temperature).toEqual(21);
     });
 
-    xit('decreases the temperature of 1 with up button', function(){
-
+    it('decreases the temperature of 1 with down button', function(){
+      thermostat2.down();
+      expect(thermostat2.temperature).toEqual(19);
     });
 
     xit('has a minimum temperature of 10 degrees', function(){
