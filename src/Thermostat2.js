@@ -8,11 +8,22 @@ Thermostat2.prototype.chosenTemperature = function(){
   return this.temperature;
 };
 
+Thermostat2.prototype.maximumTemperature = function(){
+  if (this.psmode === true){
+    return 25;
+  };
+  return 32;
+};
+
 Thermostat2.prototype.togglePowerSavingMode = function() {
+  this.psmode = !this.psmode;
   return this.psmode;
 };
 
 Thermostat2.prototype.up = function() {
+  if (this.temperature === this.maximumTemperature){
+    throw new Error('its already the maximum!');
+  };
   this.temperature ++ ;
 };
 
@@ -21,4 +32,8 @@ Thermostat2.prototype.down = function() {
     throw new Error('10 is the minimum!');
   };
   this.temperature -- ;
+};
+
+Thermostat2.prototype.pressReset = function(){
+  this.temperature = 20;
 };
