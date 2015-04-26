@@ -3,6 +3,7 @@ describe('Thermostat2', function(){
   beforeEach(function(){
     thermostat2 = new Thermostat2();
   });
+
   describe('at initial state', function(){
     it('starts at a temperature of 20 degrees', function(){
       expect(thermostat2.temperature).toEqual(20);
@@ -24,8 +25,15 @@ describe('Thermostat2', function(){
       expect(thermostat2.temperature).toEqual(19);
     });
 
-    xit('has a minimum temperature of 10 degrees', function(){
+    it('has a minimum temperature of 10 degrees', function(){
+      expect(thermostat2.minimumTemperature).toEqual(10);
+    });
 
+    it('is not possible to go under the minimum temperature', function(){
+      for(i=0;i<10;i++){
+      thermostat2.down();
+      };
+      expect(function(){thermostat2.down()}).toThrow(new Error('10 is the minimum!'));
     });
 
     xit('has a maximum temperature of 25 degrees when power saving mode is on', function(){

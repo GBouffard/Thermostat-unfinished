@@ -1,5 +1,6 @@
 var Thermostat2 = function(){
   this.temperature = 20;
+  this.minimumTemperature = 10;
   this.psmode = true;
 };
 
@@ -16,5 +17,8 @@ Thermostat2.prototype.up = function() {
 };
 
 Thermostat2.prototype.down = function() {
+  if (this.temperature === this.minimumTemperature){
+    throw new Error('10 is the minimum!');
+  };
   this.temperature -- ;
 };
